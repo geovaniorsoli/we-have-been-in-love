@@ -1,6 +1,8 @@
 "use client"
-import { ConfettiButton } from "@/components/ui/confetti";
+import Confetti, { ConfettiButton } from "@/components/ui/confetti"
 import SparklesText from "@/components/ui/sparkles-text"
+import RetroGrid from "@/components/ui/retro-grid"
+import { useEffect, useRef } from "react"
 
 export default function Index() {
   const currentDate = new Date()
@@ -10,25 +12,35 @@ export default function Index() {
     let years = endDate.getFullYear() - startDate.getFullYear()
     let months = (endDate.getMonth() + 2) - startDate.getMonth()
     let days = endDate.getDate() - startDate.getDate()
-    return { years, months, days}
+    return { years, months, days }
   }
 
-  const { years, months, days} = calculateDateDifference(initialDate, currentDate)
+  const { years, months, days } = calculateDateDifference(initialDate, currentDate)
 
-  const theDate = new Date(3).getDate
-  // if(currentDate == theDate){
+  const isSpecialDay = currentDate.getDate() === 3
 
-  // }
   return (
     <>
-      <div className="container">
-        <h1 className="clock">
-          <SparklesText text="testo" />
-          {years} anos {months} meses {days} dias 
+      <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+        <p>
+          we have been in <span className="text-red-500"> love </span> for
+        </p>
+        <SparklesText
+          className={`clock ${isSpecialDay ? "text-red-500" : ""
+            }`}
+          text={`${years} year ${months} month ${days} day`}
+        />
+        <RetroGrid />
 
-          <ConfettiButton> teste </ConfettiButton>
-        </h1>
+        {isSpecialDay ? (
+          <ConfettiButton className="mt-3"> Celebrate 🎉 </ConfettiButton>
+        ) : null}
+
       </div>
+
+
+
     </>
   )
 }
+
