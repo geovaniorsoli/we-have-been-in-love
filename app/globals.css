@@ -90,8 +90,13 @@ body {
 
 
 @media screen {
-  .clock{
+  .date{
     font-size: 2rem;
+  }
+  
+  .clock{
+    margin-top: 0em;
+    font-size: 1.2rem;
   }
 }
 
