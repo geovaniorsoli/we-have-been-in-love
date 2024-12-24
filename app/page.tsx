@@ -3,6 +3,7 @@ import Confetti, { ConfettiButton } from "@/components/ui/confetti"
 import SparklesText from "@/components/ui/sparkles-text"
 import RetroGrid from "@/components/ui/retro-grid"
 import { useEffect, useRef } from "react"
+import Theme from "@/components/theme"
 
 export default function Index() {
   const currentDate = new Date()
@@ -22,6 +23,9 @@ export default function Index() {
   return (
     <>
       <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+        <div className="absolute top-4 right-4 z-50">
+          <Theme />
+        </div>
         <p>
           we have been in <span className="text-red-500"> love </span> for
         </p>
@@ -37,7 +41,6 @@ export default function Index() {
         ) : null}
 
       </div>
-
 
 
     </>
